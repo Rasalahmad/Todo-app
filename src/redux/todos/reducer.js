@@ -14,7 +14,7 @@ const nextTodoId = (todos) => {
 };
 
 const reducer = (state = initialState, action) => {
-  switch (action.value) {
+  switch (action.type) {
     case ADDED:
       return [
         ...state,
