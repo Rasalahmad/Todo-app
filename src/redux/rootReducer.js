@@ -3,8 +3,8 @@ import filtersReducer from "./filters/reducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  todo: todoReducer,
-  filter: filtersReducer,
+  todos: todoReducer,
+  filters: filtersReducer,
 });
 
 export default rootReducer;
