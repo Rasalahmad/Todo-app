@@ -31,25 +31,9 @@
       "color": "red"
     },
     {
-      "text": "learn Redux",
-      "completed": false,
-      "id": 6
-    },
-    {
       "text": "Learn Redux Toolkit",
       "completed": true,
       "id": 7
-    },
-    {
-      "text": "Test",
-      "completed": true,
-      "id": 8,
-      "color": "yellow"
-    },
-    {
-      "text": "hdjhdjhdjsdh",
-      "completed": false,
-      "id": 9
     },
     {
       "text": "Redux is awesome",
