@@ -26,7 +26,7 @@
     },
     {
       "text": "Learn Redux fundamentals",
-      "completed": true,
+      "completed": false,
       "id": 5,
       "color": "red"
     },
@@ -37,13 +37,14 @@
     },
     {
       "text": "Learn Redux Toolkit",
-      "completed": false,
+      "completed": true,
       "id": 7
     },
     {
       "text": "Test",
-      "completed": false,
-      "id": 8
+      "completed": true,
+      "id": 8,
+      "color": "yellow"
     },
     {
       "text": "hdjhdjhdjsdh",
@@ -58,7 +59,8 @@
     {
       "text": "Learn Node js",
       "completed": false,
-      "id": 11
+      "id": 11,
+      "color": "green"
     }
   ]
 }
