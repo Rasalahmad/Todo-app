@@ -7,6 +7,7 @@ import {
   DELETED,
   TOGGLED,
   LOADED,
+  UPDATETEXT,
 } from "./actionTypes";
 
 const nextTodoId = (todos) => {
@@ -64,6 +65,19 @@ const reducer = (state = initialState, action) => {
 
     case CLEARCOMPLETED:
       return state.filter((todo) => !todo.completed);
+
+    case UPDATETEXT:
+      const { id, text } = action.payload;
+      return state.map((todo) => {
+        if (todo.id !== id) {
+          return todo;
+        } else {
+          return {
+            ...todo,
+            text: text,
+          };
+        }
+      });
 
     default:
       return state;

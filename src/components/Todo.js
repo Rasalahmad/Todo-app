@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import cancelImage from "../assets/images/cancel.png";
 import { useDispatch } from "react-redux";
 import updateStatus from "../redux/todos/thunk/updateStatus";
 import updateColor from "../redux/todos/thunk/updateColor";
 import deleteTodo from "../redux/todos/thunk/deleteTodo";
+import updateTodo from "../redux/todos/thunk/updateTodo";
+import CompletedTodos from "./CompletedTodos";
 
 const Todo = ({ todo }) => {
   const { id, text, completed, color } = todo;
+  const [showInput, setShowInput] = useState(false);
+  const [update, setUpdate] = useState("");
   const dispatch = useDispatch();
 
   const handleStatusChange = (todoId) => {
@@ -19,6 +23,10 @@ const Todo = ({ todo }) => {
 
   const handleDelete = (todoId) => {
     dispatch(deleteTodo(todoId));
+  };
+
+  const handleSubmit = (id, updatedText) => {
+    dispatch(updateTodo(id, updatedText));
   };
 
   return (
@@ -44,9 +52,18 @@ const Todo = ({ todo }) => {
         )}
       </div>
 
-      <div className={`select-none flex-1 ${completed && "line-through"}`}>
-        {text}
-      </div>
+      {showInput ? (
+        <input
+          className="select-none flex-1 p-2 w-100"
+          type="text"
+          defaultValue={text}
+          onBlur={(e) => setUpdate(e.target.value)}
+        />
+      ) : (
+        <div className={`select-none flex-1 ${completed && "line-through"}`}>
+          {text}
+        </div>
+      )}
 
       <div
         className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-green-500 hover:bg-green-500 ${
@@ -68,7 +85,15 @@ const Todo = ({ todo }) => {
         }`}
         onClick={() => handleColorChange(id, "red")}
       ></div>
-
+      <p className="cursor-pointer" onClick={() => setShowInput(true)}>
+        E
+      </p>
+      <p
+        className="cursor-pointer"
+        onClick={() => [handleSubmit(id, update), setShowInput(false)]}
+      >
+        P
+      </p>
       <img
         src={cancelImage}
         className="flex-shrink-0 w-4 h-4 ml-2 cursor-pointer"
